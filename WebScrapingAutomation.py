@@ -6,5 +6,8 @@ response = requests.get(url) # "response" stores the servers response. The other
 soup = BeautifulSoup(response.text, 'html.parser')
 
 title = soup.find('h1').text.strip()  # this line finds and then extracts the title of the book by finding the first <h1> HTML tag in the url
+price = soup.find('p',{'class': 'price_color'}).text.strip()
 
 print(f"Title: {title}")
+print(f"Price: {price}")
+
