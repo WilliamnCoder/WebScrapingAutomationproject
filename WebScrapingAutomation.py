@@ -2,6 +2,9 @@ import requests # imported to fetch web content (also possible with 'urllib' but
 from bs4 import BeautifulSoup #importing BeautifulSoup for parsing the HTML page(s)
 
 url = "https://books.toscrape.com/catalogue/sharp-objects_997/index.html"
-response = requests.get(url)
+response = requests.get(url) # "response" stores the servers response. The other part of the code is a GET request to fetch the HTML via the url defined above
 soup = BeautifulSoup(response.text, 'html.parser')
 
+title = soup.find('h1').text.strip()  # this line finds and then extracts the title of the book by finding the first <h1> HTML tag in the url
+
+print(f"Title: {title}")
